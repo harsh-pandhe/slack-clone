@@ -3,27 +3,28 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
-import {FaGithub} from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { SignInFlow } from "../types";
 import { useState } from "react";
 
-interface SignInCardProps {
+interface SignUpCardProps {
     setState: (state: SignInFlow) => void;
 };
 
 
-export const SignInCard = ({ setState }: SignInCardProps) => {
+export const SignUpCard = ({ setState }: SignUpCardProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     return (
         <Card className="w-full h-full p-8">
             <CardHeader className="px-0 pt-0">
                 <CardTitle>
-                    Login to Continue
+                    Sign Up to Continue
                 </CardTitle>
-            <CardDescription>
-                Use your email or another service to continue.
-            </CardDescription>
+                <CardDescription>
+                    Use your email or another service to continue.
+                </CardDescription>
             </CardHeader>
             <CardContent className="space-y-5 px-0 pb-0">
                 <form className="space-y-2.5">
@@ -41,6 +42,14 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         placeholder="Password"
+                        required
+                    />
+                    <Input
+                        disabled={false}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        type="password"
+                        placeholder="Confirm Password"
                         required
                     />
                     <Button type="submit" className="w-full" variant="default" size="lg" disabled={false}> Continue </Button>
@@ -67,9 +76,9 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
                     </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                    Don't have an account? <span onClick={() => setState("signUp")} className="text-sky-700 hover:underline cursor-pointer">Sign Up</span>
+                    Already have an Account? <span onClick={() => setState("signIn")} className="text-sky-700 hover:underline cursor-pointer">Sign In</span>
                 </p>
             </CardContent>
-        </Card> 
+        </Card>
     )
 };
