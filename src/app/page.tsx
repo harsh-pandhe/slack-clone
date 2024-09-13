@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { AuthScreen } from "@/features/auth/components/auth-screen";
 
 export default function Home() {
   return (
-    <Button variant={"secondary"} size={"lg"} className="m-4"> Hey There </Button>
+    <AuthScreen />
   );
 }
